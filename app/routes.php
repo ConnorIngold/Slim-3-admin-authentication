@@ -1,6 +1,7 @@
 <?php
 
-$app->get('/', 'HomeController:index');
+$app->get('/', 'HomeController:index')->setName('home');
+// set a say on the home page so we can redirect back to it
 
 $app->get('/auth/signup', 'AuthController:getSignUp')->setName('auth.signup');
 // get the controller & then the calls the function then sets name so we can reference it
