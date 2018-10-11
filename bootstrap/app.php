@@ -21,6 +21,7 @@ $app = new \Slim\App([
 ]);
 
 
+
 $container = $app->getContainer();
 
 
@@ -47,6 +48,12 @@ $container['view'] = function ($container) {
     return $view;
 };
 
+
+$container['validator'] = function ($container) {
+    return new App\Validation\Validator;
+};
+
+
 $container['HomeController'] = function ($container) {
   return new \App\Controllers\HomeController($container);
 };
@@ -55,5 +62,7 @@ $container['AuthController'] = function ($container) {
   return new \App\Controllers\Auth\AuthController($container);
 };
 // adding the controller to the app
+
+$app->add(new \App\Middleware\ValidationErrorsMiddleware($container));
 
 require __DIR__ . '/../app/routes.php';
