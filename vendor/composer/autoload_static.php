@@ -24,6 +24,7 @@ class ComposerStaticInit19b0f94df96f0ed38640ab1734e5f0a0
             'Symfony\\Polyfill\\Ctype\\' => 23,
             'Symfony\\Component\\Translation\\' => 30,
             'Slim\\Views\\' => 11,
+            'Slim\\Csrf\\' => 10,
             'Slim\\' => 5,
         ),
         'R' => 
@@ -78,6 +79,10 @@ class ComposerStaticInit19b0f94df96f0ed38640ab1734e5f0a0
         'Slim\\Views\\' => 
         array (
             0 => __DIR__ . '/..' . '/slim/twig-view/src',
+        ),
+        'Slim\\Csrf\\' => 
+        array (
+            0 => __DIR__ . '/..' . '/slim/csrf/src',
         ),
         'Slim\\' => 
         array (

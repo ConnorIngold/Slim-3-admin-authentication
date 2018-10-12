@@ -9,3 +9,6 @@ $app->post('/auth/signup', 'AuthController:postSignUp');
 // the post connections it to sign up form
 // when you inspect the page you should see omething like:
 // Silm-3-Authentication/public/auth/signup
+
+$app->get('/auth/signin', 'AuthController:getSignIn')->setName('auth.signin');
+$app->post('/auth/signin', 'AuthController:postSignIn');
