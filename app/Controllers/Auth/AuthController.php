@@ -8,6 +8,13 @@ use Respect\Validation\Validator as v;
 
 class AuthController extends Controller
 {
+  public function getSignOut($request, $response)
+  {
+    $this->auth->logout();
+
+    return $response->withRedirect($this->router->pathFor('home'));
+  }
+
   public function getSignIn($request, $response)
   {
     return $this->view->render($response, 'auth/signin.twig');
@@ -55,6 +62,9 @@ class AuthController extends Controller
       'name' => $request->getParam('name'),
       'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
     ]);
+
+    // log the user directly in
+		$this->auth->attempt($user->email, $request->getParam('password'));
 
     return $response->withRedirect($this->router->pathFor('home'));
     // after the user is created need to redirect to home page

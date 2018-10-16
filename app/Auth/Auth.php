@@ -6,6 +6,19 @@ use App\Models\User;
 
 class Auth
 {
+  public function user()
+	{
+		if (isset($_SESSION['user'])) {
+			return User::find($_SESSION['user']);
+		}
+	}
+	public function check()
+	{
+		if (isset($_SESSION['user'])) {
+			return isset($_SESSION['user']);
+		}
+	}
+
   public function attempt($email, $password)
   {
 
@@ -27,5 +40,10 @@ class Auth
 
         // verify password for that user
     // set into session
+  }
+
+  public function logout()
+  {
+    unset($_SESSION['user']);
   }
 }
