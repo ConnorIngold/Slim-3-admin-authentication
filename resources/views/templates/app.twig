@@ -16,11 +16,12 @@
     {% include 'templates/partials/navigation.twig' %}
     <style media="screen">
       p{
-        padding: 100px;
+        padding-top: 50px;
       }
     </style>
 
     <div class="container pt-4">
+      {% include 'templates/partials/flash.twig' %}
       {% block content %}{% endblock %}
     </div>
 

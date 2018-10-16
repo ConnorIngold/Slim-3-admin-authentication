@@ -22,6 +22,11 @@ class User extends Model
     // found this fix on stack overflow
     // I pretty sure it states write tables
     // are writtable to the database
-
+    public function setPassword($password)
+  	{
+  		$this->update([
+  			'password' => password_hash($password, PASSWORD_DEFAULT)
+  		]);
+  	}
 
 }
