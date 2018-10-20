@@ -3,6 +3,7 @@
 namespace App\Controllers\Auth;
 
 use App\Models\User;
+use App\Models\UserPermission;
 use App\Controllers\Controller;
 use Respect\Validation\Validator as v;
 
@@ -63,6 +64,8 @@ class AuthController extends Controller
       'name' => $request->getParam('name'),
       'password' => password_hash($request->getParam('password'), PASSWORD_DEFAULT),
     ]);
+
+    $user->permissions()->create(UserPermission::$defaults);
 
     $this->flash->addMessage('info', 'You have been signed up');
 

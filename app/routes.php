@@ -3,6 +3,9 @@
 use App\Middleware\AuthMiddleware;
 use App\Middleware\GuestMiddleware;
 $app->get('/', 'HomeController:index')->setName('home');
+
+require __DIR__ . '/routes/admin.php';
+
 // when a user is signed in
 $app->group('', function(){
 	// signup routes
@@ -20,6 +23,8 @@ $app->group('', function(){
 	$this->get('/auth/password/change', 'PasswordController:getChangePassword')->setName('auth.password.change');
 	$this->post('/auth/password/change', 'PasswordController:postChangePassword');
 })->add(new AuthMiddleware($container));
+
+
 
 
 

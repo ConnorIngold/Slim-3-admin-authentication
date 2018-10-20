@@ -29,4 +29,19 @@ class User extends Model
   		]);
   	}
 
+    public function hasPermission($permission) //name of permission as a parameter like $canPost
+    {
+      return (bool) $this->permissions->{$permission};
+    }
+
+    public function isAdmin()
+    {
+      return $this->hasPermission('is_admin');
+    }
+
+    public function permissions()
+    {
+        return $this->hasOne('App\Models\UserPermission', 'user_id');
+    }
+
 }
